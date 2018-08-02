@@ -20,6 +20,6 @@ from todo import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-# url(r'^$/, views.task, name='task'),
+    url(r'^list/(?P<pk>\d+)/$', views.task, name='task'),
     path('admin/', admin.site.urls),
 ]
