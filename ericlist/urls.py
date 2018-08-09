@@ -19,6 +19,7 @@ from django.conf.urls import url
 from todo import views
 
 urlpatterns = [
-    url(r'^$', views.task, name='task'),
+    url(r'^$', views.task, name='home'),
     path('admin/', admin.site.urls),
+    path('task/', views.task, name='task'),
 ]

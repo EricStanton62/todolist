@@ -1,5 +1,3 @@
-{% load crispy_forms_tags %}
-
 
 <html>
     <head>
@@ -11,13 +9,20 @@
     </head>
     <body>
         <h1>Eric's to do List</h1>
-
-        {% crispy forms forms.helper %}
-        <form method="post" class="uniForm">
-            {{ Listform|crispy }}
-
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_task">Task</label>
+                <input type="text" class= "form-control" id = "id_task" name='task'>
+            </div>
+            <div>{% for stuff in items %}
+                    {{stuff.item}} 
+                    <div class="btn btn-primary ml-2">delete</div>
+                    <br>
+                {% endfor %}</div>
         </form>
-
+        
         
     </body>
 </html>
