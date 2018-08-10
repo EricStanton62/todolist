@@ -16,16 +16,17 @@
                 <label for="id_task">Task</label>
                 <input type="text" class= "form-control" id = "id_task" name='task'>
             </div>
-            
-        </form>
-        <form method='get'>
             <div>{% for stuff in items %}
                 {{stuff.item}} 
-                <a href="{% url 'task'%}" class="btn btn-primary ml-2">delete</a></div>
+                <button class="btn btn-primary ml-2">delete</button></div>
             <br>
             {% endfor %}
             </div>
         </form>
+        {% block content %}
+        {% endblock %}
+            
+        
         
         
     </body>
