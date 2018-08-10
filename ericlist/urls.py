@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', views.task, name='home'),
     path('admin/', admin.site.urls),
     path('task/', views.task, name='task'),
+    url(r'^task/(?P<pk>\d+)$', views.removal, name='removal'),
 ]
