@@ -18,11 +18,12 @@ def task(request):
     return render(request,'home.html', {'items': items})  
 
 def removal(request, pk):
-    items=get_object_or_404(TodoList,pk=pk)
+    tasks=get_object_or_404(TodoList,pk=pk)
 
     if request.method =="POST":
-        items.delete()
+
+        tasks.delete()
 
         return redirect('task')
 
-    return render(request, 'removal.html', {'items': items})   
+    return render(request, 'removal.html', {'tasks': tasks})   
