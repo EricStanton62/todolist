@@ -1,8 +1,0 @@
-{% extends 'home.html' %}
-{% block content %}
-     
-<form method="post" action="{% url 'removal' TodoList.id %}">
-    {% csrf_token %}
-    <input type="submit" value="Delete task">
-</form>
-{% endblock %}
