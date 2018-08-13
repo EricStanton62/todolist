@@ -8,3 +8,4 @@ class NewTask(forms.Form):
     class Meta:
         model=TodoList
         fields=['items']
+        

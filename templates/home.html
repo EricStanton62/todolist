@@ -20,7 +20,8 @@
                 {{stuff.item}}
                 <a href="/edit/{{stuff.pk}}" class="btn btn-primary ml-2">edit</a>
                 <a href="/remove/{{stuff.pk}}" class="btn btn-primary ml-2">delete</a>
-            <br>
+                <br>
+                {% endif %}
             {% endfor %}
             </div>
         </form>

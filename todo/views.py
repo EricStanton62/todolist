@@ -2,18 +2,20 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import TodoList
 from .forms import NewTask
+from django import forms
    
 # Create your views here.
 
 def task(request):
     items=TodoList.objects.all()
-    if request.method=='POST':
-        item=request.POST['task']
-        try:
-            task = TodoList.objects.create(item=item)
-        except:
-            "do nothing"
-        return redirect('task')
+    for jello in items:
+        
+
+            if request.method=='POST':
+                item=request.POST['task']
+                task = TodoList.objects.create(item=item)
+
+                return redirect('task')
 
     return render(request,'home.html', {'items': items})  
 
@@ -41,3 +43,7 @@ def edit(request, pk):
             task.save()
         
     return redirect('task')
+
+def completed(request, pk):
+    items=TodoList.objects.all()
+

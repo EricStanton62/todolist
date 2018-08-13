@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{%block title %}completed page{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <h1>Completed tasks</h1>
+        <div>{% for stuff in items %}
+            {% if stuff.checkbox=True %}
+            {{stuff.item}}
+            {% endif %}
+        {% endfor %}
+        </div>
+    </body>
+</html>
