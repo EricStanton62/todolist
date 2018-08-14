@@ -1,10 +1,10 @@
 from django.db import models
 
 # Create your models here.
-class TodoList(models.Model):
-    item=models.CharField(max_length=50)
-    checkbox=models.BooleanField()
+class Todo(models.Model):
+    task=models.CharField(max_length=50)
+    is_complete=models.BooleanField(default=False)
 
 
     def __str__(self):
-        return self.item
+        return self.task

@@ -1,11 +1,12 @@
 from django import forms
-from .models import TodoList
+from .models import Todo
 
 
-class NewTask(forms.Form):
-    items=forms.CharField(label="next item",max_length=50, required=True,)
-    
+class NewTask(forms.ModelForm):
+    task=forms.CharField(label="next item",max_length=50, required=True,)
+    is_complete=forms.BooleanField(required=False, initial=False)
+
     class Meta:
-        model=TodoList
-        fields=['items']
+        model=Todo
+        fields=['task', 'is_complete']
         

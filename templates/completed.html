@@ -8,11 +8,21 @@
     </head>
     <body>
         <h1>Completed tasks</h1>
-        <div>{% for stuff in items %}
-            {% if stuff.checkbox=True %}
-            {{stuff.item}}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+            <div>{% for stuff in all_tasks %}
+                {% if stuff.is_complete is True %}
+                {{stuff.item}}
+                <span>Complete? {{stuff.is_complete}}</span>
+                <span class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name='done'>
+                    <label class="form-check-label" for="defaultCheck1">
+                      Complete?
+                    </label>
+                </span>
             {% endif %}
-        {% endfor %}
         </div>
     </body>
 </html>

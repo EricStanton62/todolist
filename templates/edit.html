@@ -13,7 +13,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="id_edit">editting:</label>
-                    <input placeholder="{{task.item}}" type="text" class= "form-control" id = "id_edit" name='edit'>
+                    <input placeholder="{{current_task.task}}" type="text" class= "form-control" id = "id_edit" name='edit'>
                 </div>
             <input type="submit">
         </form>

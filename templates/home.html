@@ -15,14 +15,23 @@
             <div class="form-group">
                 <label for="id_task">Task</label>
                 <input type="text" class= "form-control" id = "id_task" name='task'>
-            </div>
-            <div>{% for stuff in items %}
-                {{stuff.item}}
+                
+                {% for stuff in all_tasks %}
+                {% if stuff.is_complete is False %}
+                {{stuff.task}}                
                 <a href="/edit/{{stuff.pk}}" class="btn btn-primary ml-2">edit</a>
                 <a href="/remove/{{stuff.pk}}" class="btn btn-primary ml-2">delete</a>
-                <br>
+                <span>Complete? {{stuff.is_complete}}</span>
+                <span class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name='done'>
+                    <label class="form-check-label" for="defaultCheck1">
+                      Complete?
+                    </label>
+                </span>
                 {% endif %}
+                <br>
             {% endfor %}
+            <input type="submit">
             </div>
         </form>
         {% block content %}
