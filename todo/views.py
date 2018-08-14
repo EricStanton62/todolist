@@ -10,20 +10,25 @@ def task(request):
     all_tasks=Todo.objects.all()
     if request.method=='POST':
         new_task=request.POST['task']
+        
         if new_task is not "":
             new_task_temp = Todo.objects.create(task=new_task)
-
+            return redirect('task_list')
+        rdy_to_move=request.POST['done']
+        if rdy_to_move is True:
+            current_task.is_complete=True
+            current_task.save()
             return redirect('task_list')
 
-    return render(request,'home.html', {'all_tasks': all_tasks})  
+    return render(request,'home.html', {'all_tasks': all_tasks, })  
 
 def removal(request, pk):
     all_tasks=Todo.objects.all()
-    tasks=get_object_or_404(Todo,pk=pk)
+    current_task=get_object_or_404(Todo,pk=pk)
 
     if request.method =="GET":
         
-        tasks.delete()
+        current_task.delete()
         return redirect('task_list')
 
     return render(request, 'home.html', {'all_tasks': all_tasks})   
@@ -42,6 +47,18 @@ def edit(request, pk):
         
     return redirect('task_list')
 
-def completed(request, pk):
+def completed(request):
     all_tasks=Todo.objects.all()
+    return render(request, 'completed.html', {'all_tasks': all_tasks})
+
+def move_completed(request, pk):
+    all_tasks=Todo.objects.all()
+    current_task=get_object_or_404(Todo,pk=pk)
+
+    if request.method=="POST":
+        rdy_to_move=request.POST['done']
+        if rdy_to_move is True:
+            current_task.is_complete=True
+            return redirect('task_list')
+    return render(request,'home.html', {'all_tasks': all_tasks, }) 
 

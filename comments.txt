@@ -1,0 +1,4 @@
+need to figure out what request.POST['done'] is actually returning from the
+checkbox html input.
+Still haven't really figured out how to use the submit button to refresh the
+main page correctly while checking if the boxes are checked or not.
