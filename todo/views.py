@@ -57,10 +57,10 @@ def move_completed(request, pk):
             if current_task.is_complete is False:
                 current_task.is_complete=True
                 current_task.save()
-                return redirect('task_list')
-        else:
-            current_task.is_complete=False
-            current_task.save()
-            return redirect('completed')
+                return render(request, 'home.html', {'all_tasks': all_tasks, })
+            else:
+                current_task.is_complete=False
+                current_task.save()
+                return redirect('completed')
     return render(request,'completed.html', {'all_tasks': all_tasks, }) 
 
