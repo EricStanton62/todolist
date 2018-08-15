@@ -1,11 +1,11 @@
-
+{% load static %}
 <html>
     <head>
         <meta charset="utf-8">
         <title>{%block title %}To do list{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     </head>
     <body>
         <h1>Eric's to do List</h1>
@@ -15,18 +15,18 @@
             <div class="form-group">
                 <label for="id_task">Task</label>
                 <input type="text" class= "form-control" id = "id_task" name='task'>
-                
                 {% for stuff in all_tasks %}
                 {% if stuff.is_complete is False %}
                 {{stuff.task}}                
                 <a href="/edit/{{stuff.pk}}" class="btn btn-primary ml-2">edit</a>
                 <a href="/remove/{{stuff.pk}}" class="btn btn-primary ml-2">delete</a>
-                <span>Complete? {{stuff.is_complete}}</span>
+                <span>{{stuff.is_complete}}</span>
                 <span class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name='done'>
+                    <input class="form-check-input" type="checkbox" value="False" id="defaultCheck1" name='done'>
                     <label class="form-check-label" for="defaultCheck1">
                       Complete?
                     </label>
+                    <a href="/completed/{{stuff.pk}}" class="btn btn-primary ml-2">complete</a>
                 </span>
                 {% endif %}
                 <br>
@@ -37,9 +37,6 @@
         </form>
         {% block content %}
         {% endblock %}
-            
-        
-        
-        
+               
     </body>
 </html>
