@@ -52,8 +52,7 @@ def move_completed(request, pk):
     current_task=Todo.objects.get(id=pk)
 
     if request.method=="GET":
-        funtastic=request.GET.get('done')
-        if not funtastic:
+        
             if current_task.is_complete is False:
                 current_task.is_complete=True
                 current_task.save()
@@ -61,6 +60,16 @@ def move_completed(request, pk):
             else:
                 current_task.is_complete=False
                 current_task.save()
-                return redirect('completed')
+                return render(request,'completed.html', {'all_tasks': all_tasks, })
+    else:
+        """sarah=request.POST(current_task.task)"""
+        current_task.is_complete=False
+        current_task.save()
     return render(request,'completed.html', {'all_tasks': all_tasks, }) 
+
+"""def delete(request):
+    all_tasts = Todo.objects.all()
+    if request.method == "POST":
+        values =request.POST.getlist(u'done')"""
+    
 
